@@ -1,23 +1,15 @@
-F <- function(x) {
-  c(
-    x[1]^2 + x[2]^2 - 4,
-    x[1]^2 - x[2] - 1
-  )
-}
+f <- function(x) x^2
 
-J <- function(x) {
-  matrix(
-    c(
-      2*x[1], 2*x[2],
-      2*x[1], -1
-    ),
-    nrow = 2,
-    byrow = TRUE
-  )
-}
+a <- 0
+b <- 2
 
-x <- c(1, 1)
+garistengah <- (b - a) * f((a + b) / 2 )
 
-F(x)
+trapesium <- (b - a) / 2 * (f(a) + f(b))
 
-J(x)
+h <- (b -a) / 2
+simpson13 <- h / 3 * (f(a) + 4*f((a + b) / 2) + f(b))
+
+c(garistengah = garistengah,
+  trapesium = trapesium,
+  simpson13 = simpson13)
